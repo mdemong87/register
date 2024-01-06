@@ -1,0 +1,175 @@
+/* header section */
+.headerWrper {
+    height: 80px;
+    background: var(--bgPrimary);
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+.logoText {
+    color: var(--textPrimary);
+    font-size: 20px;
+    font-weight: 600;
+    background: var(--bgsecondary);
+    padding: 10px;
+}
+
+.logo {
+    height: 70px;
+    width: 80px;
+}
+
+
+
+
+/* navber section */
+.navUl {
+    list-style: none;
+    align-items: center;
+}
+
+.link {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--textPrimary);
+    font-weight: 600;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.navberIcons {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--textPrimary);
+}
+
+.navberIconsCeossWrp {
+    display: none;
+}
+
+.linkWrp {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.link:hover {
+    color: var(--color-primary);
+}
+
+.transparantDiv {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width:1024px) {
+
+    .navberIcons {
+        display: block !important;
+    }
+
+    .transparantDiv {
+        display: block;
+        background: rgba(27, 27, 27, 0.462);
+        width: 100%;
+    }
+
+    .navberIconsCeossWrp {
+        display: block;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .navberIconsCeoss {
+        font-size: 35px;
+        font-weight: bold;
+        cursor: pointer;
+        color: var(--bgPrimary);
+        background: var(--color-primary);
+        border-radius: 10px;
+        padding: 2px;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .navberIconsCeoss:hover {
+        transform: rotate(90deg);
+    }
+
+    .nav {
+        height: 100vh;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        grid-template-columns: 300px 1fr;
+        display: none;
+    }
+
+    .navActive {
+        height: 100vh;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        grid-template-columns: 300px 1fr;
+        display: grid;
+    }
+
+    .navUl {
+        width: 100%;
+        background: var(--bgsecondary);
+        align-items: flex-start;
+        padding: 25px 15px;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .linkWrp {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .link {
+        padding: 12px 10px;
+        border-radius: 10px;
+        width: 100% !important;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--textPrimary);
+    }
+
+    .link:hover {
+        background: var(--bgPrimary);
+    }
+
+}
