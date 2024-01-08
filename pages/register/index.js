@@ -11,6 +11,14 @@ import { MdEmail, MdOutlineCalendarMonth, MdOutlineTextSnippet } from "react-ico
 import { SlUserFemale } from "react-icons/sl";
 import { TbWorld } from "react-icons/tb";
 import Container from "../../componnent/Container";
+import Loading from "../../componnent/Loading";
+
+//for react toastify
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 
 export default function Register() {
 
@@ -38,6 +46,7 @@ export default function Register() {
     const [hear, sethear] = useState('');
     const [agree, setagree] = useState(false);
     const [message, setmessage] = useState('');
+    const [isLoading, setisLoading] = useState(false);
 
 
 
@@ -57,17 +66,45 @@ export default function Register() {
 
     //handlesubmite function here
     async function handleSubmit() {
-        console.log(
-            {
-                title, fristName, sureName, dateOfDate, tubeStation, postCode, mobileNumber, email, emergancyContactName, emergancyContactNumber, nationality, insurance, card, cardNumber, issueDate, expaireDate, criminal, department, month, permission, hear, agree, message
-            }
-        );
+
+        //start loading start
+        setisLoading(true);
+
+
+        //cteate a object from all single variable
+        const dataObject = {
+            title, fristName, sureName, dateOfDate, tubeStation, postCode, mobileNumber, email, emergancyContactName, emergancyContactNumber, nationality, insurance, card, cardNumber, issueDate, expaireDate, criminal, department, month, permission, hear, agree, message
+        }
+
+
+        //make a fetch post request in the server
+        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(dataObject)
+        });
+        const res = await response.json();
+
+        //end the loading state becosue the server get back response
+        setisLoading(false);
+
+
+        //show toast sms on depande the server response
+        if (res.success) {
+            toast.success(res.message);
+        } else {
+            toast.error(res.error);
+        }
+
     }
 
 
 
     return (
         <main className="f-fit py-20 pb-32">
+            <ToastContainer />
             <Container>
                 <div className="w-full">
                     <h1 className="text-3xl font-bold pcolor text-center pb-8">Register Form</h1>
@@ -637,7 +674,7 @@ export default function Register() {
                                 </h3>
                             </div>
                             <div className="w-full h-full flex items-start justify-between gap-2">
-                                <textarea onChange={(e) => setmessage(e.target.value)} className="w-full h-48 rounded-md flex justify-center items-center py-1 shadow cursor-pointer bg-gray-100 outline-1 outline-gray-300 pl-12 pt-2 relative text-md"></textarea>
+                                <textarea onChange={(e) => setmessage(e.target.value)} className="w-full h-48 rounded-md flex justify-center items-center py-1 shadow cursor-pointer bg-gray-100 outline-1 outline-gray-300 pl-12 pt-2 pr-3 relative text-md"></textarea>
                                 <MdOutlineTextSnippet className="absolute text-gray-500 text-2xl mt-2 ml-4" />
                             </div>
                         </div>
@@ -669,7 +706,11 @@ export default function Register() {
 
                         {/* submite button start hrere */}
                         <div className="mt-10 w-full">
-                            <button onClick={() => handleSubmit()} className="pbg text-gray-50 py-2 w-full rounded-md text-xl cursor-pointer">Submit</button>
+                            <button onClick={() => handleSubmit()} className="pbg text-gray-50 py-2 w-full rounded-md text-xl cursor-pointer">
+                                {
+                                    isLoading ? <Loading /> : "Submit"
+                                }
+                            </button>
                         </div>
                         {/* submite button end hrere */}
 
