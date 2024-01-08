@@ -81,7 +81,7 @@ export default function Dashborad({ data }) {
 export async function getServerSideProps() {
 
     try {
-        const res = await fetch(`http://localhost:3000${process.env.NEXT_PUBLIC_BACKEND_URL}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${process.env.NEXT_PUBLIC_BACKEND_URL}`);
 
 
         if (!res.ok) {
