@@ -681,7 +681,7 @@ export default function Register() {
                         <div className="flex gap-5 flex-col lg:flex-row items-start justify-center border-b-2 border-gray-200 py-4">
                             <div className="w-full lg:w-2/4">
                                 <h3 className="text-lg flex items-center justify-start gap-2 lg:justify-between">
-                                    <span>Message *</span>
+                                    <span>Write Somethings about yourself *</span>
                                     <span className="text-gray-900">:</span>
                                 </h3>
                             </div>
