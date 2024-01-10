@@ -67,43 +67,55 @@ export default function Register() {
     //handlesubmite function here
     async function handleSubmit() {
 
-        //start loading start
-        setisLoading(true);
 
 
-        //cteate a object from all single variable
-        const dataObject = {
-            title, fristName, sureName, dateOfDate, tubeStation, postCode, mobileNumber, email, emergancyContactName, emergancyContactNumber, nationality, insurance, card, cardNumber, issueDate, expaireDate, criminal, department, month, permission, hear, agree, message
-        }
+        if (title != "" && fristName != "" && sureName != "" && dateOfDate != "" && tubeStation != "" && postCode != "" && mobileNumber != "" && email != "" && emergancyContactName != "" && emergancyContactNumber != "" && nationality != "" && insurance != "" && card != "" && cardNumber != "" && issueDate != "" && expaireDate != "" && criminal != "" && department != "" && month != "" && permission != "" && hear != "" && agree === true && message !== "") {
 
 
-        //make a fetch post request in the server
-        const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(dataObject)
-        });
-        const res = await response.json();
-
-        //end the loading state becosue the server get back response
-        setisLoading(false);
+            //start loading start
+            setisLoading(true);
 
 
-        //show toast sms on depande the server response
-        if (res.success) {
-            toast.success(res.message);
+            //cteate a object from all single variable
+            const dataObject = {
+                title, fristName, sureName, dateOfDate, tubeStation, postCode, mobileNumber, email, emergancyContactName, emergancyContactNumber, nationality, insurance, card, cardNumber, issueDate, expaireDate, criminal, department, month, permission, hear, agree, message
+            }
+
+
+            //make a fetch post request in the server
+            const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(dataObject)
+            });
+            const res = await response.json();
+
+            //end the loading state becosue the server get back response
+            setisLoading(false);
+
+
+            //show toast sms on depande the server response
+            if (res.success) {
+                toast.success(res.message);
+            } else {
+                toast.error(res.error);
+            }
+
+
+
         } else {
-            toast.error(res.error);
+            toast.error("Enter Some all the Required filed");
         }
+
 
     }
 
 
 
     return (
-        <main className="f-fit py-20 pb-32">
+        <main className="f-fit py-20 pb-4">
             <ToastContainer />
             <Container>
                 <div className="w-full">
@@ -723,6 +735,7 @@ export default function Register() {
 
                 </div>
             </Container>
+            <p className="text-center pt-28">Developed by - <Link target="blank" className="text-green-400" href={"https://emonhossen.xyz"}>Md Emon Hossen</Link></p>
         </main>
     )
 }

@@ -7,6 +7,7 @@ export default function Dashborad({ data }) {
 
 
 
+
     return (
         <main className="f-fit py-20 pb-32">
             <Container>
@@ -58,6 +59,23 @@ export default function Dashborad({ data }) {
                                             <td className="p-5 border border-green-200">{item.dateOfDate}</td>
                                             <td className="p-5 border border-green-200">{item.tubeStation}</td>
                                             <td className="p-5 border border-green-200">{item.postCode}</td>
+                                            <td className="p-5 border border-green-200">{item.mobileNumber}</td>
+                                            <td className="p-5 border border-green-200">{item.email}</td>
+                                            <td className="p-5 border border-green-200">{item.emergancyContactName}</td>
+                                            <td className="p-5 border border-green-200">{item.emergancyContactNumber}</td>
+                                            <td className="p-5 border border-green-200">{item.nationality}</td>
+                                            <td className="p-5 border border-green-200">{item.insurance}</td>
+                                            <td className="p-5 border border-green-200">{item.card}</td>
+                                            <td className="p-5 border border-green-200">{item.cardNumber}</td>
+                                            <td className="p-5 border border-green-200">{item.issueDate}</td>
+                                            <td className="p-5 border border-green-200">{item.expaireDate}</td>
+                                            <td className="p-5 border border-green-200">{item.criminal}</td>
+                                            <td className="p-5 border border-green-200">{item.department}</td>
+                                            <td className="p-5 border border-green-200">{item.month}</td>
+                                            <td className="p-5 border border-green-200">{item.permission}</td>
+                                            <td className="p-5 border border-green-200">{item.hear}</td>
+                                            <td className="p-5 border border-green-200">{item.agree ? "True" : "False"}</td>
+                                            <td className="p-5 border border-green-200"><p className="overflow-y-scroll max-h-[120px]">{item.message}</p></td>
                                         </tr>
                                     })
                                 }

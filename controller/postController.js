@@ -21,7 +21,7 @@ export default async function PostController(req, res) {
 
 
         //send email from here
-        await EmailSend();
+        await EmailSend(title, fristName, email, mobileNumber, nationality);
 
 
 
