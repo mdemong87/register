@@ -1,4 +1,5 @@
 import Container from "../../componnent/Container";
+import { default as downloadPDF } from "../../utillity/download";
 
 export default function Dashborad({ data }) {
 
@@ -21,6 +22,7 @@ export default function Dashborad({ data }) {
                             <thead className="bg-green-200">
                                 <tr>
                                     <th className="p-5 border border-green-200">SL</th>
+                                    <th className="p-5 border border-green-200">Download</th>
                                     <th className="p-5 border border-green-200">Title</th>
                                     <th className="p-5 border border-green-200">Frist Name</th>
                                     <th className="p-5 border border-green-200">Sure Name</th>
@@ -51,8 +53,13 @@ export default function Dashborad({ data }) {
 
                                 {
                                     mainData.map((item, index) => {
+
                                         return <tr key={index} className="border-b-2 border-green-200">
                                             <td className="p-5 border border-green-200">{index + 1}</td>
+                                            <td className="p-5 border border-green-200">
+
+                                                <button className="bg-green-500 p-3 rounded-md text-white cursor-pointer" onClick={() => { downloadPDF(mainData[index]) }}> Download </button>
+                                            </td>
                                             <td className="p-5 border border-green-200 ">{item.title}</td>
                                             <td className="p-5 border border-green-200">{item.fristName}</td>
                                             <td className="p-5 border border-green-200">{item.sureName}</td>
@@ -85,10 +92,13 @@ export default function Dashborad({ data }) {
 
 
 
+
                     </div>
 
                 </div>
             </Container>
+
+
         </main>
     )
 }
