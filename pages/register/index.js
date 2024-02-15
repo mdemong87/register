@@ -735,7 +735,7 @@ export default function Register() {
 
                 </div>
             </Container>
-            <p className="text-center pt-28">Developed by - <Link target="blank" className="text-green-400" href={"https://emonhossen.xyz"}>Md Emon Hossen</Link></p>
+            <p className="text-center pt-28">Developed by - <Link target="blank" className="text-green-400" href={"https://www.nanosoft.uk/"}>Nanosoft</Link></p>
         </main>
     )
 }
