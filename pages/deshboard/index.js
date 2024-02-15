@@ -52,7 +52,7 @@ export default function Dashborad({ data }) {
                             <tbody>
 
                                 {
-                                    mainData.map((item, index) => {
+                                    mainData?.map((item, index) => {
 
                                         return <tr key={index} className="border-b-2 border-green-200">
                                             <td className="p-5 border border-green-200">{index + 1}</td>
